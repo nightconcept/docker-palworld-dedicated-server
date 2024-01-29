@@ -358,6 +358,10 @@ function startServer() {
         echo "> Setting Multi-Core-Enchancements to enabled"
         START_OPTIONS="$START_OPTIONS -useperfthreads -NoAsyncLoadingThread -UseMultithreadForDS"
     fi
+    if [[ -n $NOSTEAM_ENABLED ]] && [[ $NOSTEAM_ENABLED == "true" ]]; then
+        echo "> Setting nosteam flag to enabled"
+        START_OPTIONS="$START_OPTIONS -nosteam"
+    fi
     ./PalServer.sh "$START_OPTIONS"
 }
 
